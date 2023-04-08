@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import StockContainer from "./StockContainer";
 import PortfolioContainer from "./PortfolioContainer";
 import SearchBar from "./SearchBar";
-const API = ''
+const API = 'http://localhost:3001/stocks'
 
 function MainContainer() {
   const [stocks, setStocks] = useState([])
@@ -10,7 +10,7 @@ function MainContainer() {
 
   useEffect( () => {
 
-    fetch('http://localhost:3001/stocks')
+    fetch(API)
     .then( r => r.json())
     .then( d => setStocks(d))
   }, [])
