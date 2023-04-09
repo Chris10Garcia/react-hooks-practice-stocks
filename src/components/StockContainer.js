@@ -5,8 +5,9 @@ function StockContainer({stocks}) {
   return (
     <div>
       <h2>Stocks</h2>
-      { stocks.map( stock => {
-            return <Stock stock={stock} key={stock.id}/> } ) }
+      { stocks.length > 0 
+          ? stocks.map( stock => { return <Stock stock={stock} key={stock.id}/> } ) 
+          : null }
     </div>
   );
 }

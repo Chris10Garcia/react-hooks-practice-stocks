@@ -7,6 +7,10 @@ const API = 'http://localhost:3001/stocks'
 function MainContainer() {
   const [stocks, setStocks] = useState([])
   const [purchased, setPurchased] = useState([])
+  const [searchData, setSearchData] = useState({
+    INPUT : "",
+    SELECT : "Tech"
+  })
 
   useEffect( () => {
 
@@ -15,12 +19,16 @@ function MainContainer() {
     .then( d => setStocks(d))
   }, [])
 
+
+  const filteredStocks = stocks.filter(stock => {
+        return stock.type === searchData.SELECT})
+
   return (
     <div>
-      <SearchBar />
+      <SearchBar setSearchData={setSearchData}/>
       <div className="row">
         <div className="col-8">
-          <StockContainer stocks={stocks}/>
+          <StockContainer stocks={filteredStocks}/>
         </div>
         <div className="col-4">
           <PortfolioContainer stocks={purchased} />
