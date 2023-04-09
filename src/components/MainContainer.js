@@ -12,6 +12,8 @@ function MainContainer() {
     SELECT : "Tech"
   })
 
+
+  // for category, i can feed it into the API link 
   useEffect( () => {
 
     fetch(API)
