@@ -1,9 +1,13 @@
 import React from "react";
 
-function SearchBar({setSearchData}) {
-  function handleOnChange(e){
-    setSearchData({[e.target.nodeName] : e.target.value})
+function SearchBar({setFilter, sortStocks}) {
+  function handleOnChangeFilter(e){
+    setFilter(e.target.value)
     // console.log(e.target.nodeName, e.target.value)
+  }
+
+  function handleOnChangeSort(e){
+    sortStocks(e.target.value)
   }
 
   return (
@@ -15,7 +19,7 @@ function SearchBar({setSearchData}) {
           value="Alphabetically"
           name="sort"
           checked={null}
-          onChange={handleOnChange}
+          onChange={handleOnChangeSort}
         />
         Alphabetically
       </label>
@@ -25,14 +29,14 @@ function SearchBar({setSearchData}) {
           value="Price"
           name="sort"
           checked={null}
-          onChange={handleOnChange}
+          onChange={handleOnChangeSort}
         />
         Price
       </label>
       <br />
       <label>
         <strong>Filter:</strong>
-        <select onChange={handleOnChange}>
+        <select onChange={handleOnChangeFilter}>
           <option value="Tech">Tech</option>
           <option value="Sportswear">Sportswear</option>
           <option value="Finance">Finance</option>
