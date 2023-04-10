@@ -27,6 +27,14 @@ function MainContainer() {
     setStocks(sortedStocks)
   }
 
+  function addRemoveStock(text, id){
+    if (text === "Stocks" && !(purchased.find(stock => stock.id === id))){
+        setPurchased([...purchased, stocks.find(stock => stock.id === id)])
+    } else if ( text === "My Portfolio") {
+        setPurchased(purchased.filter(stock => stock.id !== id))
+    }
+  }
+
 
 
 
@@ -35,10 +43,10 @@ function MainContainer() {
       <SearchBar setFilter={setFilter} sortStocks={sortStocks}/>
       <div className="row">
         <div className="col-8">
-          <StockContainer stocks={stocks}/>
+          <StockContainer stocks={stocks} addRemoveStock={addRemoveStock}/>
         </div>
         <div className="col-4">
-          <PortfolioContainer stocks={purchased} />
+          <PortfolioContainer stocks={purchased} addRemoveStock={addRemoveStock}/>
         </div>
       </div>
     </div>
